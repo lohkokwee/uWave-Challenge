@@ -1,0 +1,23 @@
+{
+    "code": "200",
+    "message": "OK.",
+    "data": {
+        "id": 44479,
+        "name": "Bus Campus Loop - Blue (CL-B) [Singapore]: NIE, Opp. LWN Library - NIE, Opp. LWN Library",
+        "routename": "Campus Loop - Blue (CL-B)None",
+        "vehicles": [
+            {
+                "vehicle_id": 31516,
+                "registration_code": "PC 4948 J",
+                "ts": "2022-03-20T06:40:32",
+                "stats": {
+                    "speed": "",
+                    "avg_speed": "19.00",
+                    "bearing": 225,
+                    "lat": "1.341756000000",
+                    "lon": "103.680527000000"
+                }
+            }
+        ]
+    }
+}

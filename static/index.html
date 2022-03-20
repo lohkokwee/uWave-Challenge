@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uWave Challenge</title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+</head>
+<body>
+    <h1>uWave Challenge API Documentation</h1>
+    <p>Use this to get started with the API.</p>
+    <hr>
+
+    <h3>Bus Stop Endpoint</h3>
+    <table>
+        <tr>
+            <td colspan="2">GET <b>/busstop/&lt;busstopid&gt;</b></td>
+        </tr>
+        <tr>
+            <td colspan="2">Parameters</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        <tr>
+            <td class="params">
+                <b>busstopid</b> <br>
+                string(6) <br>
+                <i>path</i>
+            </td>
+            <td>
+                Bus stop ID of specific bus stop. <br>
+                <br>
+                Valid values: <br>            
+                    "378204", "383050", "378202", "383049", "382998", "378237", "378233", "378230",
+                    "378229", "378228", "378227", "382995", "378224", "378226", "383010", "383009", 
+                    "383006", "383004", "378234", "383003", "378222", "383048", "378203", "382999", 
+                    "378225", "383014", "383013", "383011", "377906", "383018", "383015", "378207"                    
+            </td>
+        </tr>
+        <tr>
+            <td>Responses</td>
+            <td>Content type - application/json</td>
+        </tr>
+
+        <tr>
+            <td class="params">
+                Code - 200 <br>
+            </td>
+            <td>
+                Description - Successful operation. <br>
+                <br>
+                Example Value:<br>
+                <pre id="busstop200">                    
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <td class="params">
+                Code - 404 <br>
+            </td>
+            <td>
+                Description - Invalid bus stop id. <br>
+                <br>
+                Example Value:<br>
+                <pre id="busstop404">                    
+                </pre>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Bus Line Endpoint</h3>
+    <table>
+        <tr>
+            <td colspan="2">GET <b>/busline/&lt;buslineid&gt;</b></td>
+        </tr>
+        <tr>
+            <td colspan="2">Parameters</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        <tr>
+            <td class="params">
+                <b>buslineid</b> <br>
+                string(5) <br>
+                <i>path</i>
+            </td>
+            <td>
+                Bus line ID of specific bus line. <br>
+                <br>
+                Valid values: <br>            
+                    "44478", "44479", "44480", "44481"                
+            </td>
+        </tr>
+        <tr>
+            <td>Responses</td>
+            <td>Content type - application/json</td>
+        </tr>
+        <tr>
+            <td class="params">
+                Code - 200 <br>
+            </td>
+            <td style="overflow-x: auto;">
+                Description - Successful operation. <br>
+                <br>
+                Example Value:<br>
+                <pre id="busline200">                    
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <td class="params">
+                Code - 404 <br>
+            </td>
+            <td>
+                Description - Invalid bus line id. <br>
+                <br>
+                Example Value:<br>
+                <pre id="busline404">                    
+                </pre>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
+
+<style>
+    table {
+        width: 1000px;
+    }
+
+    table, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        vertical-align: top;
+    }
+
+    .params {
+        width: 150px;
+        white-space: nowrap;
+    }
+
+
+</style>
+
+<script>
+    const RESPONSES = ['busstop200', 'busstop404', 'busline200', 'busline404']
+
+    RESPONSES.forEach((response) => {
+        $.getJSON(`/static/responses/${response}.json`, (data) => {
+            document.getElementById(`${response}`).textContent = JSON.stringify(data, undefined, 2);
+        })
+    })
+
+</script>
