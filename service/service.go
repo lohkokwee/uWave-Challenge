@@ -29,8 +29,10 @@ type ResponseWithLineData struct {
 var TimeStamp time.Time = time.Now().Round(time.Second)
 
 func RetrieveStopDetails(w http.ResponseWriter, r *http.Request) {
-	// log.Println("--- (func) RetrieveStopDetails ---")
+	// Desc: Validate bus stop IDs and retrieve bus stop details by calling service package.
+	// Return: Send a response back to caller
 
+	// log.Println("--- (func) RetrieveStopDetails ---")
 	vars := mux.Vars(r)
 	busStopId := vars["busStopId"]
 
@@ -69,13 +71,14 @@ func RetrieveStopDetails(w http.ResponseWriter, r *http.Request) {
 
 	successResponse := ResponseWithStopData{"200", "OK.", busStopObject}
 	json.NewEncoder(w).Encode(successResponse)
-
 	// log.Println("--- (func end) RetrieveStopDetails ---")
 }
 
 func RetrieveLineDetails(w http.ResponseWriter, r *http.Request) {
-	// log.Println("--- (func) RetrieveLineDetails ---")
+	// Desc: Validate bus line IDs and retrieve bus line details by calling service package.
+	// Return: Send a response back to caller
 
+	// log.Println("--- (func) RetrieveLineDetails ---")
 	vars := mux.Vars(r)
 	busLineId := vars["busLineId"]
 
@@ -112,6 +115,5 @@ func RetrieveLineDetails(w http.ResponseWriter, r *http.Request) {
 
 	successResponse := ResponseWithLineData{"200", "OK.", busLineObject}
 	json.NewEncoder(w).Encode(successResponse)
-
 	// log.Println("--- (func end) RetrieveLineDetails ---")
 }

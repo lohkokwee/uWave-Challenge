@@ -27,22 +27,18 @@ type Forecast struct {
 var BusStops = make(map[string]BusStop)
 
 func ConsumeBusStop(busStopId string) BusStop {
+	// Desc: Consume and filter external API endpoint with Go structs
+	// Return: BusStop struct - filtered and ready to be encoded as response
+
 	// log.Println("--- (func start) ConsumeBusStop ---")
-
 	apiEndpoint := fmt.Sprintf("https://dummy.uwave.sg/busstop/%s", busStopId)
-	// log.Println("API Endpoint:", apiEndpoint)
-
 	response, err := http.Get(apiEndpoint)
 
 	if err != nil {
-		// Handle error
 		log.Println(err.Error())
 	}
 	defer response.Body.Close()
 
-	// 1. Decode JSON data
-	// 2. Filter required information through struct
-	// 3. Stores struct in map
 	var busStopObject BusStop
 	json.NewDecoder(response.Body).Decode(&busStopObject)
 	BusStops[busStopId] = busStopObject
@@ -53,10 +49,11 @@ func ConsumeBusStop(busStopId string) BusStop {
 }
 
 func BusStopAvail(busStopId string) bool{
-	// log.Println("--- (func start) BusStopAvail ---")
+	// Desc: Check if BusStop is available
+	// Return: Boolean
 
+	// log.Println("--- (func start) BusStopAvail ---")
 	_, avail := BusStops[busStopId]
-	
 	// log.Println("--- (func end) BusStopAvail ---")
 	return avail
 }

@@ -40,20 +40,18 @@ type Projection struct {
 var BusLines = make(map[string]BusLine)
 
 func ConsumeBusLine(busLineId string) BusLine {
+	// Desc: Consume and filter external API endpoint with Go structs
+	// Return: BusLine struct - filtered and ready to be encoded as response
+
 	// log.Println("--- (func start) ConsumeBusLine ---")
-
 	apiEndpoint := fmt.Sprintf("https://dummy.uwave.sg/busline/%s", busLineId)
-	// log.Println("API Endpoint:", apiEndpoint)
-
 	response, err := http.Get(apiEndpoint)
 
 	if err != nil {
-		// Handle error
 		log.Println(err.Error())
 	}
 	defer response.Body.Close()
 
-	// Decode JSON data and filter required information through struct
 	var busLineObject BusLine
 	json.NewDecoder(response.Body).Decode(&busLineObject)
 	BusLines[busLineId] = busLineObject
@@ -64,10 +62,11 @@ func ConsumeBusLine(busLineId string) BusLine {
 }
 
 func BusLineAvail(busLineId string) bool{
-	// log.Println("--- (func start) BusLineAvail ---")
+	// Desc: Check if BusLine is available
+	// Return: Boolean
 
+	// log.Println("--- (func start) BusLineAvail ---")
 	_, avail := BusLines[busLineId]
-	
 	// log.Println("--- (func end) BusLineAvail ---")
 	return avail
 }
