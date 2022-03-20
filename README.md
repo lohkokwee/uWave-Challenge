@@ -1,7 +1,7 @@
 # uWave Self-Learning Challenge
 Submission for uWave's self learning challenge. This README details how to get the backend service started.
 
-Access the plans to the challenge <a href="">here</a>.
+Access the plans to the challenge <a href="https://drive.google.com/drive/folders/1ntg9ZdPEqFMkd3WRzKy7eoi5BvCB0mYj?usp=sharing">here</a>.
 
 # Getting started
 There are two ways to get the service going, either through Docker or interfacing with Go directly. Below are instructions for both, feel free to use either one.
@@ -40,4 +40,4 @@ go build .
 ```
 <i>(Note: This command would differ according to your OS. On a Windows system, the command would include '.exe' at the end.)</i>
 
-3. End the program with ```cntl + c``` on your terminal.
+3. End the program with ```ctrl + c``` on your terminal.

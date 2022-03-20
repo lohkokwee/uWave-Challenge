@@ -8,10 +8,7 @@ RUN go build -o main .
 
 # Reduce size of docker image
 FROM gcr.io/distroless/base-debian11
-COPY --from=builder     \
-    /usr/src/app/main   \
-    /usr/src/app/static \
-    ./
-    
+COPY --from=builder /usr/src/app/main ./
+COPY --from=builder /usr/src/app/static ./static
 EXPOSE 80
 ENTRYPOINT [ "./main" ]
